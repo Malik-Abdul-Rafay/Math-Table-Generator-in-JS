@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Math Table</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Math Table Generator</h1>
+        <button onclick="generateTable()">Generate Table</button>
+        <table id="mathTable"></table>
+    </div>
+
+    <script>
+        function generateTable() {
+    const multiplicationFactor = prompt('Enter a number for the multiplication table:');
+    if (multiplicationFactor === null || multiplicationFactor === "") {
+        return; // User canceled or entered an empty string
+    }
+
+    const table = document.getElementById('mathTable');
+    table.innerHTML = '';
+
+    for (let i = 1; i <= 10; i++) {
+        const result = multiplicationFactor * i;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${multiplicationFactor} x ${i}</td>
+            <td>${result}</td>
+        `;
+
+        table.appendChild(row);
+    }
+}
+
+    </script>
+</body>
+</html>
